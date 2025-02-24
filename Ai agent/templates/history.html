@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartNotes AI - History</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-indigo-100 to-purple-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white rounded-3xl shadow-2xl p-8 w-full max-w-3xl">
+        <h1 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-6 text-center">
+            History
+        </h1>
+        <ul class="space-y-4">
+            {% for item in history %}
+            <li class="p-4 bg-gray-100 rounded-xl shadow-md">
+                <p><span class="text-indigo-600 font-semibold">Q:</span> {{ item.question }}</p>
+                <p><span class="text-purple-600 font-semibold">A:</span> {{ item.answer | safe }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+        <div class="text-center mt-6 space-x-4">
+            <a href="/" class="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 
+            text-white font-bold py-2 px-6 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                Go Back
+            </a>
+            <form action="/clear_history" method="post" class="inline">
+                <button type="submit" class="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 
+                text-white font-bold py-2 px-6 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                    Clear History
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
